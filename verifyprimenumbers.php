@@ -1,4 +1,12 @@
 <?php
+/*
+Problem: Prime Number Checker
+Write a PHP function that takes an integer as input 
+and returns true if the number is prime, and false otherwise. 
+A prime number is a natural number greater than 1 
+that is not a product of two smaller natural numbers.
+*/
+
 function isPrime($number) {
     // 1 and numbers less than 1 are not prime
     if ($number < 2) {

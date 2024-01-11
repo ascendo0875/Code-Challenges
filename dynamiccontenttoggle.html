@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content Toggle</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <h1>Code Challenge - JQuery</h1>
+    <p>Create a simple HTML page that contains a button and a paragraph of text. When the button is clicked, the text should toggle between being visible and hidden. Use jQuery to achieve this functionality.</p>
+    <button id="toggleButton">Toggle Content</button>
+    <p id="content">This is some dynamic content that should be toggled.</p>
+
+    <script>
+        $(document).ready(function() {
+            $("#toggleButton").click(function() {
+                $("#content").toggle();
+            });
+        });
+    </script>
+</body>
+</html>

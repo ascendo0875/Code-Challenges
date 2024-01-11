@@ -1,4 +1,13 @@
 <?php
+/*
+Write a PHP function that generates the Fibonacci sequence up 
+to a specified number of terms. 
+The Fibonacci sequence is a series of numbers in which each 
+number is the sum of the two preceding ones, usually starting 
+with 0 and 1.
+*/
+
+
 function generateFibonacci($terms) {
     $fibonacci = array();
     
