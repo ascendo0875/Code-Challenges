@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>To-Do List</h1>
+        <input type="text" id="taskInput" placeholder="Add a new task">
+        <button onclick="addTask()">Add Task</button>
+
+        <ul id="taskList"></ul>
+
+        <div>
+            <label>Show:
+                <select id="filterOptions" onchange="filterTasks()">
+                    <option value="all">All</option>
+                    <option value="completed">Completed</option>
+                    <option value="incomplete">Incomplete</option>
+                </select>
+            </label>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code
+        let tasks = [];
+
+        function renderTasks() {
+            const taskList = document.getElementById('taskList');
+            taskList.innerHTML = '';
+
+            tasks.forEach((task, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <input type="checkbox" ${task.completed ? 'checked' : ''} onchange="toggleTask(${index})">
+                    ${task.text}
+                    <button onclick="deleteTask(${index})">Delete</button>
+                `;
+                taskList.appendChild(li);
+            });
+        }
+
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const taskText = taskInput.value.trim();
+
+            if (taskText !== '') {
+                tasks.push({ text: taskText, completed: false });
+                taskInput.value = '';
+                renderTasks();
+            }
+        }
+
+        function deleteTask(index) {
+            tasks.splice(index, 1);
+            renderTasks();
+        }
+
+        function toggleTask(index) {
+            tasks[index].completed = !tasks[index].completed;
+            renderTasks();
+        }
+
+        function filterTasks() {
+            const filterOptions = document.getElementById('filterOptions');
+            const filter = filterOptions.value;
+
+            switch (filter) {
+                case 'completed':
+                    renderTasks(tasks.filter(task => task.completed));
+                    break;
+                case 'incomplete':
+                    renderTasks(tasks.filter(task => !task.completed));
+                    break;
+                default:
+                    renderTasks(tasks);
+            }
+        }
+
+        // Initial rendering
+        renderTasks();
+    </script>
+</body>
+</html>
